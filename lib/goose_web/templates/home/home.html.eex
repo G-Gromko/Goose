@@ -1,0 +1,10 @@
+<div class="phx-hero">
+    <h2> Welcome to Goose </h2>
+    <p> a Twitter bootleg </p>
+    <a href="/timeline/posts"> Enter </a>
+    <br>
+    <a href="/sessions/new"> Log-in </a>
+    <br>
+    <a href="/users/new"> Sign-in </a>
+    
+</div>

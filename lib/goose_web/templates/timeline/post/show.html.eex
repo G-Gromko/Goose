@@ -1,0 +1,23 @@
+<h1>Post Viewer</h1>
+
+<ul>
+
+  <li>
+    <strong>Body:</strong>
+    <%= @post.body %>
+  </li>
+
+  <li>
+    <strong>Views:</strong>
+    <%= @post.views %>
+  </li>
+
+  <li>
+    <strong>Author:</strong>
+    <%= author_name(@post) %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.timeline_post_path(@conn, :edit, @post) %></span>
+<span><%= link "Back", to: Routes.timeline_post_path(@conn, :index) %></span>

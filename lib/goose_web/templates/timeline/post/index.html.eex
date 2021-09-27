@@ -1,0 +1,36 @@
+<h1>Timeline</h1>
+
+
+<%= for post <- @posts do %>
+<div class="post">
+  <div class="row">
+    <div class="column column-10">
+      <div class="post-avatar"></div>
+    </div>
+    <div class="column column-90 post-body">
+      <b> @<%=author_name(post)%> </b>
+      <br/>
+      <%= post.body %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="column post-button-column">
+      Comment
+    </div>
+    <div class="column post-button-column">
+      Views: <%= post.views %>
+    </div>
+
+    <div class="column post-button-column">
+      <span><%= link "Show", to: Routes.timeline_post_path(@conn, :show, post) %></span>
+
+    </div>
+
+  </div>
+</div>
+
+<% end %>
+
+
+<span><%= link "New Post", to: Routes.timeline_post_path(@conn, :new) %></span>
