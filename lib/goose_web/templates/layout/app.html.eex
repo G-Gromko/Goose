@@ -8,25 +8,29 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
-  <body>
+  <body class="bg-gray-800 text-gray-100">
     <header>
       <section class="container">
         <nav role="navigation">
-          <ul>
+          <ul class="text-right font-bold pt-3 pb-2">
             <span> <%= link "Log-in", to: Routes.session_path(@conn, :new) %> </span>
             <br>
             <span> <%= link "Sign-in", to: Routes.user_path(@conn, :new) %> </span>
           </ul>
         </nav>
-        <a href="/home" class="phx-logo">
-          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
+        <a href="/home" class="logo">
+          <div class="p-3">
+           <img class="w-10px rounded-lg mx-auto" src="<%= Routes.static_path(@conn, "/images/goose-logo.png") %>" alt="Goose" />
+          </div>
         </a>
       </section>
     </header>
     <main role="main" class="container">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= @inner_content %>
+      <p class="bg-gray-600 rounded-lg h-20px pl-4" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="bg-red-600 rounded-lg h-20px pl-4" role="alert"><%= get_flash(@conn, :error) %></p>
+      <div class="center">
+        <%= @inner_content %>
+      </div>
     </main>
   </body>
 </html>

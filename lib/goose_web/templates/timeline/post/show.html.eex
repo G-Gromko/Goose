@@ -1,23 +1,29 @@
-<h1>Post Viewer</h1>
 
-<ul>
 
-  <li>
-    <strong>Body:</strong>
-    <%= @post.body %>
-  </li>
+<div class="pb-2 content-center rounded-xl bg-gray-700 m-1">
+  <div class="row">
+    <div class="column column-10">
+      <div class="post-avatar"></div>
+    </div>
+    <div class="pt-2 pl-4">
+      <b> @<%=author_name(@post)%> </b>
+      <br/>
+      <%= @post.body %>
+    </div>
+  </div>
 
-  <li>
-    <strong>Views:</strong>
-    <%= @post.views %>
-  </li>
+  <div class="flex flex-wrap content-center text-yellow-600 font-bold text-center border-t-2 border-gray-600">
+    <div class="flex-1">
+      Comment
+    </div>
+    <div class="flex-1">
+      Views: <%= @post.views %>
+    </div>
 
-  <li>
-    <strong>Author:</strong>
-    <%= author_name(@post) %>
-  </li>
+    <div class="flex-1">
+      <span><%= link "Edit", to: Routes.timeline_post_path(@conn, :edit, @post) %></span>
+      <span><%= link "Back", to: Routes.timeline_post_path(@conn, :index) %></span>
+    </div>
 
-</ul>
-
-<span><%= link "Edit", to: Routes.timeline_post_path(@conn, :edit, @post) %></span>
-<span><%= link "Back", to: Routes.timeline_post_path(@conn, :index) %></span>
+  </div>
+</div>

@@ -5,11 +5,14 @@
     </div>
   <% end %>
 
-  <%= label f, :body %>
-  <%= text_input f, :body %>
-  <%= error_tag f, :body %>
 
-  <div>
-    <%= submit "Save" %>
+  <div class="p-2 content-center rounded-xl bg-gray-700 m-1 text-gray-700">
+    
+    <%= text_input f, :body %>
+    <%= error_tag f, :body %>
+
+  </div>
+ <div class="font-bold text-yellow-600">
+    <b> <%= submit "Save" %> </b>
   </div>
 <% end %>
