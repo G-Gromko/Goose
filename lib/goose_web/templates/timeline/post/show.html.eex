@@ -1,6 +1,6 @@
 
 
-<div class="pb-2 content-center rounded-xl bg-gray-700 m-1">
+<div class="w-2/3 mx-auto pb-2 content-center rounded-xl bg-gray-700 m-1">
   <div class="row">
     <div class="column column-10">
       <div class="post-avatar"></div>

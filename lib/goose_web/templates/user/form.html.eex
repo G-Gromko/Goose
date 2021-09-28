@@ -5,25 +5,25 @@
     </div>
   <% end %>
 
-  <div class="p-2 content-center rounded-xl bg-yellow-600  m-1 text-gray-700">
+  <div class="w-2/3 mx-auto p-2 content-center rounded-xl bg-yellow-600  m-1 text-gray-700">
     <%= label f, :name %>
     <%= text_input f, :name %>
     <%= error_tag f, :name %>
   </div>
 
-  <div class="p-2 content-center rounded-xl bg-yellow-600 m-1 text-gray-700">
+  <div class="w-2/3 mx-auto  p-2 content-center rounded-xl bg-yellow-600 m-1 text-gray-700">
     <%= label f, :username %>
     <%= text_input f, :username %>
     <%= error_tag f, :username %>
   </div>
 
-  <div class="p-2 content-center rounded-xl bg-yellow-600 m-1 text-gray-700">
+  <div class="w-2/3 mx-auto p-2 content-center rounded-xl bg-yellow-600 m-1 text-gray-700">
     <%= label f, :bio %>
     <%= text_input f, :bio %>
     <%= error_tag f, :bio %>
   </div>
 
-  <div class="p-2 content-center rounded-xl bg-yellow-600  m-1 text-gray-700">
+  <div class="w-2/3 mx-auto p-2 content-center rounded-xl bg-yellow-600  m-1 text-gray-700">
     <div class="form-group">
       <%= inputs_for f, :credential, fn cf -> %>
         <%= label cf, :email %>

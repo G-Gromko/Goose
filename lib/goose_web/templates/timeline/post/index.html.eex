@@ -2,7 +2,7 @@
 
 
 <%= for post <- @posts do %>
-<div class="pb-2 content-center rounded-xl bg-gray-700 m-1">
+<div class="w-2/3 pb-2 rounded-xl bg-gray-700 m-1 mx-auto">
   <div class="row">
     <div class="column column-10">
       <div class="post-avatar"></div>
@@ -16,7 +16,7 @@
 
   <div class="flex flex-wrap content-center text-yellow-600 font-bold text-center border-t-2 border-gray-600">
     <div class="flex-1">
-      Comment
+      Comments
     </div>
     <div class="flex-1">
       Views: <%= post.views %>

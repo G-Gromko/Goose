@@ -6,7 +6,7 @@
   <% end %>
 
 
-  <div class="p-2 content-center rounded-xl bg-gray-700 m-1 text-gray-700">
+  <div class="w-2/3 mx-auto p-2 content-center rounded-xl bg-gray-700 m-1 text-gray-700">
     
     <%= text_input f, :body %>
     <%= error_tag f, :body %>

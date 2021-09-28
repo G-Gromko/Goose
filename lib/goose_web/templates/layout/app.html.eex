@@ -26,8 +26,8 @@
       </section>
     </header>
     <main role="main" class="container">
-      <p class="bg-gray-600 rounded-lg h-20px pl-4" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="bg-red-600 rounded-lg h-20px pl-4" role="alert"><%= get_flash(@conn, :error) %></p>
+      <p class="w-1/3 mx-auto bg-gray-600 rounded-lg h-20px pl-4" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="w-1/3 mx-auto bg-red-600 rounded-lg h-20px pl-4" role="alert"><%= get_flash(@conn, :error) %></p>
       <div class="center">
         <%= @inner_content %>
       </div>
