@@ -77,7 +77,7 @@ defmodule GooseWeb.Timeline.PostController do
       assign(conn, :post, post)
     else
       conn
-      |> put_flash(:error, "You can't modify other people posts")
+      |> put_flash(:error, "You can't modify other people stuff")
       |> redirect(to: Routes.timeline_post_path(conn, :index))
       |> halt()
     end

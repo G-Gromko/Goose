@@ -1,21 +1,20 @@
-defmodule Goose.Timeline.Post do
+defmodule Goose.Timeline.Comment do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias Goose.Timeline.{Author, Comment}
+  alias Goose.Timeline.{Author, Post}
 
-  schema "posts" do
+  schema "comments" do
     field :body, :string
-    field :views, :integer
     belongs_to :author, Author
-    has_many :comments, Comment
+    belongs_to :post, Post
 
     timestamps()
   end
 
   @doc false
-  def changeset(post, attrs) do
-    post
+  def changeset(comment, attrs) do
+    comment
     |> cast(attrs, [:body])
     |> validate_required([:body])
     |> validate_length(:body, min: 2, max: 280)

@@ -1,0 +1,26 @@
+<h1 class="text-center font-bold text-5xl pt-5 pb-4">Comments</h1>
+
+
+<%= for comment <- @comments do %>
+  <div class="w-2/3 pb-2 rounded-xl bg-gray-700 m-1 mx-auto">
+    <div class="row">
+      <div class="pt-2 pl-4">
+        <b> @<%=author_name(comment)%> </b>
+        <br/>
+        <%= comment.body %>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap content-center text-yellow-600 font-bold text-center border-t-2 border-gray-600">
+      <div class="flex-1">
+        <span><%= link "Show", to: Routes.timeline_post_comment_path(@conn, :show, @post_id, comment) %></span>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<span class="font-bold text-yellow-600 pb-12"><%= link "New Comment", to: Routes.timeline_post_comment_path(@conn, :new, @post_id) %></span>
+<br>
+<span class="font-bold text-yellow-600 pb-12"><%= link "Back", to: Routes.timeline_post_path(@conn, :show, @post_id) %></span>
+<br>
+<span class="font-bold text-yellow-600 pb-12"><%= link "Back to Timeline", to: Routes.timeline_post_path(@conn, :index) %></span>

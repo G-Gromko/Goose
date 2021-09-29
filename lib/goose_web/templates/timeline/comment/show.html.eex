@@ -1,0 +1,18 @@
+<div class="w-2/3 mx-auto pb-2 content-center rounded-xl bg-gray-700 m-1">
+  <div class="row">
+    <div class="pt-2 pl-4">
+      <b> @<%=author_name(@comment)%> </b>
+      <br/>
+      <%= @comment.body %>
+    </div>
+  </div>
+
+  <div class="flex flex-wrap content-center text-yellow-600 font-bold text-center border-t-2 border-gray-600">
+
+    <div class="flex-1">
+      <span><%= link "Edit", to: Routes.timeline_post_comment_path(@conn, :edit, @post_id, @comment.id) %></span>
+      <span><%= link "Back", to: Routes.timeline_post_comment_path(@conn, :index, @post_id) %></span>
+    </div>
+
+  </div>
+</div>

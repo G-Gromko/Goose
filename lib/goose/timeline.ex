@@ -6,7 +6,7 @@ defmodule Goose.Timeline do
   import Ecto.Query, warn: false
   alias Goose.Repo
 
-  alias Goose.Timeline.{Post, Author}
+  alias Goose.Timeline.{Post, Author, Comment}
   alias Goose.Accounts
 
   @doc """
@@ -18,11 +18,25 @@ defmodule Goose.Timeline do
       [%Post{}, ...]
 
   """
+  # def list_posts do
+  #   Post
+  #   |> Repo.all()
+  #   |> Repo.preload(author: [user: :credential])
+  # end
+
   def list_posts do
-    Post
-    |> Repo.all()
-    |> Repo.preload(author: [user: :credential])
+    query = from p in Post,
+      order_by: [desc: p.id],
+      preload: [author: [user: :credential]]
+    Repo.all(query)
   end
+
+  # def get_comments_by_post_id(post_id) do
+  #   query = from c in Comment,
+  #     where: c.post_id == ^post_id,
+  #     preload: [author: [user: :credential]]
+  #   Repo.all(query)
+  # end
 
   @doc """
   Gets a single post.
@@ -85,7 +99,7 @@ defmodule Goose.Timeline do
   Deletes a post.
 
   ## Examples
-
+  comments/new
       iex> delete_post(post)
       {:ok, %Post{}}
 
@@ -224,6 +238,7 @@ defmodule Goose.Timeline do
     Repo.get_by!(Author, user_id: changeset.data.user_id)
   end
 
+
   def inc_post_views(%Post{} = post) do
     {1, [%Post{views: views}]} =
       from(p in Post, where: p.id == ^post.id, select: [:views])
@@ -232,4 +247,117 @@ defmodule Goose.Timeline do
     put_in(post.views, views)
   end
 
+
+  alias Goose.Timeline.Comment
+
+  @doc """
+  Returns the list of comments.
+
+  ## Examples
+
+      iex> list_comments()
+      [%Comment{}, ...]
+
+  """
+  def list_comments do
+    Comment
+    |> Repo.all()
+    |> Repo.preload(author: [user: :credential])
+  end
+
+  def get_comments_by_post_id(post_id) do
+    query = from c in Comment,
+      where: c.post_id == ^post_id,
+      order_by: [asc: c.id],
+      preload: [author: [user: :credential]]
+    Repo.all(query)
+  end
+
+  @doc """
+  Gets a single comment.
+
+  Raises `Ecto.NoResultsError` if the Comment does not exist.
+
+  ## Examples
+
+      iex> get_comment!(123)
+      %Comment{}
+
+      iex> get_comment!(456)
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_comment!(id) do
+    Comment
+    |> Repo.get!(id)
+    |> Repo.preload(author: [user: :credential])
+  end
+
+
+  @doc """
+  Creates a comment.
+
+  ## Examples
+
+      iex> create_comment(%{field: value})
+      {:ok, %Comment{}}
+
+      iex> create_comment(%{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def create_comment(%Author{} = author, post_id, attrs \\ %{}) do
+    %Comment{}
+    |> Comment.changeset(attrs)
+    |> Ecto.Changeset.put_change(:author_id, author.id)
+    |> Ecto.Changeset.put_change(:post_id, post_id)
+    |> Repo.insert()
+  end
+
+  @doc """
+  Updates a comment.
+
+  ## Examples
+
+      iex> update_comment(comment, %{field: new_value})
+      {:ok, %Comment{}}
+
+      iex> update_comment(comment, %{field: bad_value})
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def update_comment(%Comment{} = comment, attrs) do
+    comment
+    |> Comment.changeset(attrs)
+    |> Repo.update()
+  end
+
+  @doc """
+  Deletes a comment.
+
+  ## Examples
+
+      iex> delete_comment(comment)
+      {:ok, %Comment{}}
+
+      iex> delete_comment(comment)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_comment(%Comment{} = comment) do
+    Repo.delete(comment)
+  end
+
+  @doc """
+  Returns an `%Ecto.Changeset{}` for tracking comment changes.
+
+  ## Examples
+
+      iex> change_comment(comment)
+      %Ecto.Changeset{data: %Comment{}}
+
+  """
+  def change_comment(%Comment{} = comment, attrs \\ %{}) do
+    Comment.changeset(comment, attrs)
+  end
 end

@@ -2,9 +2,6 @@
 
 <div class="w-2/3 mx-auto pb-2 content-center rounded-xl bg-gray-700 m-1">
   <div class="row">
-    <div class="column column-10">
-      <div class="post-avatar"></div>
-    </div>
     <div class="pt-2 pl-4">
       <b> @<%=author_name(@post)%> </b>
       <br/>
@@ -14,7 +11,7 @@
 
   <div class="flex flex-wrap content-center text-yellow-600 font-bold text-center border-t-2 border-gray-600">
     <div class="flex-1">
-      Comment
+      <span><%= link "Comments", to: Routes.timeline_post_comment_path(@conn, :index, @post) %>
     </div>
     <div class="flex-1">
       Views: <%= @post.views %>

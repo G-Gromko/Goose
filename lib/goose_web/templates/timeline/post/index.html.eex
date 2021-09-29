@@ -16,7 +16,7 @@
 
   <div class="flex flex-wrap content-center text-yellow-600 font-bold text-center border-t-2 border-gray-600">
     <div class="flex-1">
-      Comments
+      <span><%= link "Comments", to: Routes.timeline_post_comment_path(@conn, :index, post) %>
     </div>
     <div class="flex-1">
       Views: <%= post.views %>
@@ -33,4 +33,4 @@
 <% end %>
 
 
-<span class="font-bold text-yellow-600"><%= link "New Post", to: Routes.timeline_post_path(@conn, :new) %></span>
+<span class="font-bold text-yellow-600 pb-12"><%= link "New Post", to: Routes.timeline_post_path(@conn, :new) %></span>

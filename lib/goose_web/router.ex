@@ -26,7 +26,9 @@ defmodule GooseWeb.Router do
   scope "/timeline", GooseWeb.Timeline, as: :timeline do
     pipe_through [:browser, :authenticate_user]
 
-    resources "/posts", PostController
+    resources "/posts", PostController do
+      resources "/comments", CommentController
+    end
   end
 
   # Other scopes may use custom stacks.
@@ -61,5 +63,6 @@ defmodule GooseWeb.Router do
         assign(conn, :current_user, Goose.Accounts.get_user!(user_id))
     end
   end
+
 
 end
