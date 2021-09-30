@@ -57,8 +57,9 @@ defmodule GooseWeb.Timeline.PostController do
     end
   end
 
-  def delete(conn, _) do
-    {:ok, _post} = Timeline.delete_post(conn.assigns.post)
+  def delete(conn, %{"id" => id}) do
+    post = Timeline.get_post!(id)
+    {:ok, _post} = Timeline.delete_post(post)
 
     conn
     |> put_flash(:info, "Post deleted successfully.")

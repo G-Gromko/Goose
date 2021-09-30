@@ -259,11 +259,6 @@ defmodule Goose.Timeline do
       [%Comment{}, ...]
 
   """
-  def list_comments do
-    Comment
-    |> Repo.all()
-    |> Repo.preload(author: [user: :credential])
-  end
 
   def get_comments_by_post_id(post_id) do
     query = from c in Comment,

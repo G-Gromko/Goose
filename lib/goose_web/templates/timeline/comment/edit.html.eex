@@ -1,5 +1,5 @@
-<h1>Edit Comment</h1>
+<h1 class="text-center font-bold text-5xl pt-5 pb-4">Edit Comment</h1>
 
-<%= render "form.html", Map.put(assigns, :action, Routes.timeline_post_comment_path(@conn, :update, @comment)) %>
+<%= render "form.html", Map.put(assigns, :action, Routes.timeline_post_comment_path(@conn, :update, @post_id, @comment.id)) %>
 
 <span><%= link "Back", to: Routes.timeline_post_comment_path(@conn, :index, @post_id) %></span>

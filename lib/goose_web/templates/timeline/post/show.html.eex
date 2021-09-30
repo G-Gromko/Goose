@@ -16,11 +16,12 @@
     <div class="flex-1">
       Views: <%= @post.views %>
     </div>
-
     <div class="flex-1">
       <span><%= link "Edit", to: Routes.timeline_post_path(@conn, :edit, @post) %></span>
-      <span><%= link "Back", to: Routes.timeline_post_path(@conn, :index) %></span>
+      <span><%= link "Delete", to: Routes.timeline_post_path(@conn, :delete, @post)%> </span>
     </div>
 
   </div>
 </div>
+
+<span class="text-yellow-600 font-bold"><%= link "Back", to: Routes.timeline_post_path(@conn, :index) %></span>

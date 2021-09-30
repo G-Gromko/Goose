@@ -8,11 +8,13 @@
   </div>
 
   <div class="flex flex-wrap content-center text-yellow-600 font-bold text-center border-t-2 border-gray-600">
-
     <div class="flex-1">
       <span><%= link "Edit", to: Routes.timeline_post_comment_path(@conn, :edit, @post_id, @comment.id) %></span>
-      <span><%= link "Back", to: Routes.timeline_post_comment_path(@conn, :index, @post_id) %></span>
     </div>
-
-  </div>
+    <div class="flex-1">
+      <span><%= link "Delete", to: Routes.timeline_post_comment_path(@conn, :delete, @post_id, @comment.id) %></span>
+    </div>
+   </div>
 </div>
+
+<span class="text-yellow-600 font-bold"><%= link "Back", to: Routes.timeline_post_comment_path(@conn, :index, @post_id) %></span>

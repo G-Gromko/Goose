@@ -21,6 +21,6 @@
 
 <span class="font-bold text-yellow-600 pb-12"><%= link "New Comment", to: Routes.timeline_post_comment_path(@conn, :new, @post_id) %></span>
 <br>
-<span class="font-bold text-yellow-600 pb-12"><%= link "Back", to: Routes.timeline_post_path(@conn, :show, @post_id) %></span>
+<span class="font-bold text-yellow-600 pb-12"><%= link "Back to Post", to: Routes.timeline_post_path(@conn, :show, @post_id) %></span>
 <br>
 <span class="font-bold text-yellow-600 pb-12"><%= link "Back to Timeline", to: Routes.timeline_post_path(@conn, :index) %></span>
